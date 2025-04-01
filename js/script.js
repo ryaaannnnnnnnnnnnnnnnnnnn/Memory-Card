@@ -1,22 +1,22 @@
-const cards = document.querySelectorAll('.card');
+const cards = document.querySelectorAll(".card");
 
-let matchedCard = 0;
+let matchedCards = 0;
 let cardOne, cardTwo;
 let disableDeck = false;
 
 function flipCard(e) {
-    let clickedCard= e.target; // getting user clicked card
-    if(clickedCard !== cardOne && !disableDeck) {
+    let clickedCard = e.target;
+    if(clickedCard !== cardOne && !disableDeck){
         clickedCard.classList.add("flip");
-    if(!cardOne) {}
-        // return the cardOne calue to the clickedCard
-        return cardOne = clickedCard;
+        if(!cardOne){
+            return cardOne = clickedCard;
+        }
+        cardTwo = clickedCard;
+        disableDeck = true;
+        let cardOneImg = cardOne.querySelector("img").src,
+        cardTwoImg = cardTwo.querySelector("img").src;
+        matchCards(cardOneImg, cardTwoImg);
     }
-    cardTwo = clickedCard;
-    disableDeck = true;
-    let cardOneIMG = cardOne.querySelector("img").src,
-    cardTwoIMG = cardTwo.querySelector("img").src;
-    matchCards(cardOneIMG, cardTwoIMG);
 
 
 }
@@ -54,7 +54,7 @@ function matchCards(img1, img2) {
 function shuffledCard() {
     matchedCard = 0;
     cardOne = cardTwo = ""; 
-    disabledDeck = false;
+    disableDeck = false;
     let arr = [1,2,3,4,5,6,7,8,1,2,3,4,5,6,7,8]; 
     arr.sort(() => Math.random() > 0.5 ? 1 : -1); // sorting array item randomly
 
